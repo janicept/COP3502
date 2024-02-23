@@ -9,17 +9,21 @@ int search(int numbers[], int low, int high, int value) {
         return -1;
     }
 	
-	int middle = low + (high - low) / 2; 
-    if (numbers[middle] == value) {
-        return middle;
+	int mid = low + (high + low) / 2; 
+    if (numbers[mid] == value) {
+        return mid;
     } 
+
+	if (low == high){
+		return mid;
+	}
 	
-	else if (numbers[middle] < value) {
-        return search(numbers, middle + 1, high, value);
+	else if (numbers[mid] < value) {
+        return search(numbers, mid + 1, high, value);
     }
 	
 	else {
-        return search(numbers, low, middle - 1, value);
+        return search(numbers, low, mid - 1, value);
     }
 }
 
